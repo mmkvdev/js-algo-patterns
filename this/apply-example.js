@@ -1,0 +1,8 @@
+/* getting maximum number from an array by passing in the array to the apply function */
+const array = [1,2,3]
+
+function getMaxNumber(arr) {
+  return Math.max.apply(null,arr);
+}
+
+getMaxNumber(array);
