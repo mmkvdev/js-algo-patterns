@@ -1,1 +1,3 @@
-// maxSub
+/*
+ * Hash Tables
+*/

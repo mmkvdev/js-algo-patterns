@@ -16,15 +16,18 @@ var checkCharInWord = (a, b) => {
 var reversePrefix = function(word, ch) {
     let index = checkCharInWord(word,ch);
     if (index) {
+        word = [...word];
         let first = 0;
         while (first < index) {
+            let temp = word[first];
             word[first] = word[index];
-            console.log(word);
+            word[index] = temp;
             first++;
             index--;
         }
-        return word;
+        return word.join('');
     }
+    return word;
 };
 
 console.log(reversePrefix('abcdefd', 'd'));
