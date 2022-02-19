@@ -25,7 +25,6 @@ function commonElements(arr1, arr2, arr3){
       k++;
     }
   }
-
   return common.sort((a,b) => a - b);
 }
 
