@@ -25,16 +25,16 @@
   * Memoization
   * Currying
   * Compose and Pipe
-* CODING PROBLEMS
-* DATA STRUCTURES
-  * ARRAYS
-  * HASH TABLES
-  * LINKEDLISTS
-  * BINARY SEARCH TREES
-* ALGORITHMS
-  * SEARCHING  - LINEAR | BINARY
-  * SORTING - MERGE -> ITERATIVE | RECURSIVE
-* PATTERNS
+* Coding Problems
+* Data Structures
+  * Arrays
+  * Hash Tables
+  * Linked Lists
+  * Binary Search Trees
+* Algorithms
+  * Searching  - Linear | Binary
+  * Sorting - Merge -> Iterative | Recursive
+* Patterns
   * Frequency Counter
   * Multiple Pointers
   * Sliding Window 
