@@ -16,7 +16,6 @@ function constructObj(obj) {
 }
 
 function commonElements(arr1, arr2, arr3){
-        //code here
         let res1 = constructObj(arr1), res2 = constructObj(arr2), res3 = constructObj(arr3), common = [];  
         for (let a in res1) {
             if (a in res2 && a in res3) {
