@@ -1,5 +1,7 @@
 /**
  * Merge Sort
+ * time complexity - O(n logn)
+ * space complexity - O(n)
  */
 
 const merge = function (list1, list2) {
@@ -15,6 +17,7 @@ const merge = function (list1, list2) {
 
   return result.concat(list1.slice(i),list2.slice(j));
 }
+
 const mergeSort = function (arr) {
   if (arr.length < 2) {
     return arr;
