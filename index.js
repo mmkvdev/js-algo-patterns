@@ -1,10 +1,8 @@
-const countDown = (num) => {
-  if (num <= 0) {
-    return 'Execution is Done!!!'
+const sumRange = (num) => {
+  if (num === 1) {
+    return 1;
   }
-  console.log(num);
-  num--;
-  countDown(num);
+  return num + sumRange(num - 1);
 }
 
-console.log(countDown(5));
+console.log(sumRange(5));
