@@ -12,6 +12,7 @@ const collectOddValues = (arr) => {
     helper(input.slice(1));
   }
   helper(arr);
+  console.log(arr);
   return res;
 }
 
