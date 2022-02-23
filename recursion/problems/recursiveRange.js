@@ -1,8 +1,7 @@
 /*
 * @function recursiveRange
 * @parameter num
-* @returns adds up all the numbers from 0 to num
-* example - [ 1, 4, 5 ] -> 20
+* @returns sum of range from 0 to num
 */
 
 

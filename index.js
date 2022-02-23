@@ -1,20 +1,18 @@
 /*
-* @function recursiveRange
+* @function fibonacciSequence
 * @parameter num
 * @returns adds up all the numbers from 0 to num
 * example - [ 1, 4, 5 ] -> 20
 */
 
-
-function recursiveRange (num) {
-  if (num == 1 || num == 0) {
+function fibonacciSequence(num) {
+  if (num == 0 || num == 1) {
     return 1;
   }
-  return num + recursiveRange(num - 1);
+  return fibonacciSequence(num - 1) + fibonacciSequence(num - 2);
 }
 
-console.log(recursiveRange(7));
-console.log(recursiveRange(5));
-console.log(recursiveRange(17));
-console.log(recursiveRange(15));
-console.log(recursiveRange(0));
+console.log(fibonacciSequence(3));
+console.log(fibonacciSequence(4));
+console.log(fibonacciSequence(5));
+console.log(fibonacciSequence(7));
