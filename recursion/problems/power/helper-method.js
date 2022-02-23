@@ -7,10 +7,17 @@
 */
 
 const power = (base, exponent) => {
-  if (exponent === 0) {
-    return 1;
+  let pro = 1;
+  const innerPower = (a, b) => {
+    if (b === 0) {
+      return;
+    }
+    pro *= a;
+    b--;
+    innerPower(a, b);
   }
-  return base * power(base,exponent - 1);
+  innerPower(base, exponent);
+  return pro;
 }
 
 console.log(power(3,3));
