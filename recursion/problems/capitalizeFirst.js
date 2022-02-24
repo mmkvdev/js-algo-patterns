@@ -14,3 +14,4 @@ const capitalizeWords = (arr) => {
 }
 
 console.log(capitalizeWords(['calm', 'down', 'red hat']));
+
