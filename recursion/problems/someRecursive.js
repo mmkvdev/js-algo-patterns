@@ -1,7 +1,7 @@
 /*
 * @function someRecursive
-* @parameter arr
-* @parameter callback
+* @parameter arr []
+* @parameter callback () => {} 
 * @returns atmost one element in the arr should return true else return false
 */
 
