@@ -9,8 +9,6 @@
  * @param {ListNode} l1
  * @param {ListNode} l2
  * @return {ListNode}
- * @timecomplexity { O(n) }
- * @spacecomplexity { O(n) }
  */
 var addTwoNumbers = function(l1, l2) {
     let node = new ListNode(0);
