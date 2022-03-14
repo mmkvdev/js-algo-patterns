@@ -4,38 +4,34 @@
  * @spacecomplexity { O(log(n)) }
  */
 
-const swap = (arr, left, right) => {
-  return [arr[left], arr[right]] = [arr[right], arr[left]];
-}
-const partition = (arr, left, right) => {
-  let pivot = arr[(left / right) / 2];
+function pivot (arr, start = 0, end = arr.length - 1) {
+  function swap(array, i, j) {
+    return [array[i], array[j]] = [array[j], array[i]];
+  }
 
-  while (left <= right) {
-    while (arr[left] < pivot) {
-      left++;
-    }
+  let pivot = arr[start];
+  let swapIdx = start;
 
-    while (arr[right] > pivot) {
-      right--;
-    }
-
-    if (left <= right) {
-      swap(arr, left, right);
-      left++;
-      right--;
+  for (let i = start + 1; i < arr.length; i++) {
+    if (pivot > arr[i]) {
+      swapIdx++;
+      swap(arr, swapIdx, i);
     }
   }
-  return left;
+  swap(arr, start, swapIdx);
+  return swapIdx; 
 }
 
-const quickSort = (arr, left, right) => {
-  let index = partition(arr, left, right);
-  if (left < index - 1) {
-    quickSort(arr,left, index-1);
+function quickSort (arr, left = 0, right = arr.length - 1) {
+  if (left < right) {
+     let pivotIndex = pivot(arr, left, right);
+     quickSort(arr, left, pivotIndex - 1);
+     quickSort(arr, pivotIndex + 1, right); 
   }
-  if (index < right) {
-    quickSort(arr,index,right);
-  }
+  return arr;
 }
 
-console.log(quickSort([8,9,1,-3]));
+let arr = [5, 2, 1, 8, 4, 7, 6, 3];
+console.log(quickSort(arr));
+console.log(quickSort([17, 11, 12, 18, 4]));
+console.log(quickSort([-3, -12, -11, 0, 1]));
