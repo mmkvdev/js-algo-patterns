@@ -1,67 +1,149 @@
 /*
- * Queue Implementation
- * Add To the End and Remove from the beginning
- * Insertion at the end and removal from the beginning - O(1)
- * Access and Search is O(n) 
+ * Binary Search Tree Implementation
 */
 
 class Node {
-  constructor (data, next = null) {
+  constructor (data, left = null, right = null) {
     this.data = data;
-    this.next = next;
+    this.left = left;
+    this.right = right;
   }
 }
 
-class Queue {
+class BST {
   constructor () {
-    this.first = null;
-    this.last = null;
-    this.size = 0;
-  }
-  
-  enqueue (val) {
-    let node = new Node(val);
-    if (!this.first) {
-      this.first = node;
-      this.last = node;
-    } else {
-      this.last.next = node;
-      this.last = node;
-    }
-    return ++this.size;
+    this.root = null;
   }
 
-  dequeue () {
-    if (!this.first) {
-      return null;
-    } else {
-      let temp = this.first;
-      if (this.first === this.last) {
-        this.last = null;
+  add (data) {
+    const node = this.root;
+    if (node === null) {
+      this.root = new Node(data);
+      return this;
+    } 
+    let current = this.root;
+    while (true) {
+      if (data === current.data) {
+        return undefined;
       }
-      this.first = this.first.next;
-      this.size--;
-      return temp.value;
+      if (data < current.data) {
+        if (current.left === null) {
+          current.left = new Node(data);
+          return this;
+        }
+        current = current.left;
+      } else {
+        if (current.right === null) {
+          current.right = new Node(data);
+          return this;
+        }
+        current = current.right;
+      }
     }
   }
 
-  printQueue () {
-    let current = this.first;
-    while(current) {
-      console.log(current.data);
-      current = current.next;
+  find (data) {
+    if (this.root === null) {
+      return false;
     }
+
+    let current = this.root, found = false;
+    while (current && !found) {
+      if (data < current.data) {
+        current = current.left;
+      } else if (data > current.data) {
+        current = current.right;
+      } else {
+        found = true;
+      }
+    }
+    if (!found) {
+      return false;
+    }
+    return current;
+  }
+
+  findMin () {
+    if (this.root === null) {
+      return 'No Min';
+    }
+
+    let current = this.root;
+    while (!!current.left) {
+      current = current.left;
+    }
+
+    return current.data;
+  }
+
+  findMax () {
+    if (this.root === null) {
+      return 'No Max';
+    }
+
+    let current = this.root;
+    while (!!current.right) {
+      current = current.right;
+    }
+
+    return current.data;
+  }
+
+  preOrder () {
+    let data = [];
+    function traverse (node) {
+      data.push(node.data);
+      if (node.left) {
+        traverse(node.left);
+      }
+      if (node.right) {
+        traverse(node.right);
+      }
+    }
+    traverse(this.root);
+    return data;
+  }
+
+  postOrder () {
+    let data = [];
+    function traverse (node) {
+       if (node.left) {
+         traverse(node.left);
+       }
+
+      if (node.right) {
+        traverse (node.right);
+      }
+      data.push(node.data);
+    }
+    traverse(this.root);
+    return data;
+  }
+
+  inOrder () {
+    let data = [];
+    function traverse (node) {
+       if (node.left) {
+         traverse(node.left);
+       }
+      data.push(node.data);
+      if (node.right) {
+        traverse (node.right);
+      }
+    }
+    traverse(this.root);
+    return data;
   }
 }
 
-const queueExample = new Queue();
-queueExample.enqueue(1);
-queueExample.enqueue(2);
-queueExample.enqueue(3);
-console.log('------enqueue test-------------');
-console.log(queueExample.printQueue());
+const newNode = new BST();
+newNode.add(10);
+newNode.add(6);
+newNode.add(15);
+newNode.add(3);
+newNode.add(8);
+newNode.add(20);
 
-console.log('--------------------dequeue test-----------------');
-console.log(queueExample.dequeue());
-console.log(queueExample.dequeue());
-console.log(queueExample.printQueue());
+console.log(newNode.inOrder());
+console.log(newNode.preOrder());
+console.log(newNode.postOrder());
