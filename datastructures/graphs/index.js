@@ -36,19 +36,71 @@ class Graph {
 
     delete this.adjacencyList[vertex];
   }
+
+  depthFirstTraversal (vertex) {
+    let result = [], visited = {};
+    let adjacentMemo = this.adjacencyList;
+
+    (function dfs (start) {
+      if (!start) {
+        return null;
+      }
+      visited[start] = true;
+      result.push(start);
+      adjacentMemo[start].forEach((neighbour) => {
+        if (!visited[neighbour]) {
+          return dfs(neighbour);
+        }
+      })
+    })(vertex);
+
+    return result;
+  }
+
+  breadthFirstTraversal (start) {
+    let queue = [start];
+    let result = [], visited = {};
+    let currentVertex;
+    visited[start] = true;
+
+    while (queue.length) {
+      currentVertex = queue.shift();
+      result.push(currentVertex);
+
+      this.adjacencyList[currentVertex].forEach((neighbour) => {
+        if (!visited[neighbour]) {
+          visited[neighbour] = true;
+          queue.push(neighbour);
+        }
+      })
+    }
+
+    return result;
+  }
 }
 
 const graphExample = new Graph();
-graphExample.addVertex('MMK');
-graphExample.addVertex('Hyderabad');
-graphExample.addVertex('US');
+graphExample.addVertex('A');
+graphExample.addVertex('B');
+graphExample.addVertex('C');
+graphExample.addVertex('D');
+graphExample.addVertex('E');
+graphExample.addVertex('F');
+// console.log(graphExample);
 
-graphExample.addEdge('MMK', 'Hyderabad');
-graphExample.addEdge('MMK', 'US');
-console.log(graphExample);
-
-graphExample.removeEdge('MMK', 'Hyderabad');
+graphExample.addEdge('A', 'B');
+graphExample.addEdge('A', 'C');
+graphExample.addEdge('B', 'D');
+graphExample.addEdge('C', 'E');
+graphExample.addEdge('D', 'E');
+graphExample.addEdge('D', 'F');
+graphExample.addEdge('F', 'E');
+/* graphExample.removeEdge('MMK', 'Hyderabad');
 console.log(graphExample);
 
 graphExample.removeVertex('US');
-console.log(graphExample);
+console.log(graphExample); */
+
+// console.log(graphExample);
+console.log(graphExample.depthFirstTraversal('A'));
+console.log(graphExample.breadthFirstTraversal('A'));
