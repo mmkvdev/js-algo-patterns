@@ -31,9 +31,11 @@
   * Hash Tables
   * Linked Lists
   * Binary Search Trees
+  * Trees - { Traversals + class implementation for Trees }
+  * Graphs - { included code for traversal - DFS, BFS }
 * Algorithms
   * Searching  - Linear | Binary
-  * Sorting - Merge -> Iterative | Recursive
+  * Sorting - Merge -> Iterative | Recursive, Quick Sort
 * Patterns
   * Frequency Counter
   * Multiple Pointers
